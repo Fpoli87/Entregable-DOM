@@ -1,5 +1,3 @@
-
-
 //Nombre usuario!
 
 let nombre = prompt("Hola! Como te llamas?").toUpperCase();
@@ -20,7 +18,7 @@ tituloSaludo.innerText = "Hola, " + nombre + ". Revisa el listado de nuestros an
 
 
 // Cuantos animales tiene disponibles de trabajo.
-let cantidadAnimales = parseInt(prompt("Cuentame " + nombre + ", cuantos animales tienes en tu granja? "));
+/*let cantidadAnimales = parseInt(prompt("Cuentame " + nombre + ", cuantos animales tienes en tu granja? "));
 
 while (true) {
     if (cantidadAnimales == null || cantidadAnimales == "" || isNaN(cantidadAnimales)) {
@@ -29,19 +27,22 @@ while (true) {
     } else {
         break;
     }
-}
+}*/
+
+
+
 
 //Formacion de los objetos y sus propiedades dentro del array
 
 let AnimalesGranja = []
 
 class Animal {
-    constructor(id, tipo, nombre, color, sonido) {
+    constructor(id, tipo, nombre, color, comida) {
         this.id = id;
         this.tipo = tipo;
         this.nombre = nombre;
         this.color = color;
-        this.sonido = sonido;
+        this.comida = comida;
     }
 
     hablar() {
@@ -61,9 +62,47 @@ class Animal {
     }
 }
 
+
+//formulario 
+
+let formulario = document.getElementById("animal-form");
+
+formulario.addEventListener('submit', (event) => {
+    event.preventDefault();
+    animales = new Animal(
+
+        idanimal = document.getElementById('formIdAnimal').value,
+        tipoanimal = document.getElementById('formTipoAnimal').value,
+        nombreanimal = document.getElementById('formNombreAnimal').value,
+        clranimal = document.getElementById('formColorAnimal').value,
+        comidaanimal = document.getElementById('formComidaAnimal').value);
+
+    AnimalesGranja.push(animales)
+
+    let listadoDisponible = document.getElementById("listadoDisponible")
+    listadoDisponible.innerHTML = ''
+    AnimalesGranja.forEach(animalesenArray => {
+        listadoDisponible.innerHTML += `
+    <div class="card animalListado m-3" id="animalListado${animalesenArray.id}">
+        <div class="card-body">
+            <h5 class="card-title">${animalesenArray.nombre}</h5>
+            <p class="card-text">ID: ${animalesenArray.id}</p>
+            <p class="card-text">Tipo: ${animalesenArray.tipo}</p>
+            <p class="card-text">Color: ${animalesenArray.color}</p>
+            <p class="card-text">Comida: ${animalesenArray.comida}</p>
+        </div>
+    </div>
+    `
+    });
+    alert('Agregado a la lista!')
+    formulario.reset()
+
+})
+
+
 //formacion del array dependiendo las necesidades del usuario
 
-for (i = 0; i < cantidadAnimales; i++) {
+/*for (i = 0; i < cantidadAnimales; i++) {
     animales = new Animal(
         idanimal = (i+1),
         tipoanimal = prompt("Ingrese tipo de animal"),
@@ -89,13 +128,13 @@ for (i = 0; i < cantidadAnimales; i++) {
         }
     }
 }
-
+*/
 
 console.log(AnimalesGranja)
 
 //ingreso de los datos a filtrar dependiendo necesidades del usuario
 
-let datoAnimal = prompt("Que dato deseas buscar? Tipo / Nombre / Color / Sonido").toLowerCase();
+/*let datoAnimal = prompt("Que dato deseas buscar? Tipo / Nombre / Color / Sonido").toLowerCase();
 
 while (true) {
     if (datoAnimal == null || datoAnimal == "" || !isNaN(datoAnimal)) {
@@ -123,8 +162,8 @@ while (true) {
         break;
     }
 }
-debugger
-//|| datoAnimal != "tipo" || datoAnimal != "nombre" || datoAnimal != "color" || datoAnimal != "sonido")
+
+
 //procesamiento de la informacion y aplicacion del filtro
 
 if (datoAnimal == "tipo" ){
@@ -140,18 +179,4 @@ if (datoAnimal == "tipo" ){
     ResultadoBusqueda = AnimalesGranja.filter(bichito => bichito.sonido == busquedaAnimal)
     console.log(ResultadoBusqueda)
 }
-
-let listadoDisponible = document.getElementById("listadoDisponible")
-
-AnimalesGranja.forEach(animalesenArray => {
-    listadoDisponible.innerHTML += `
-    <div class="card animalListado m-3" id="animalListado${animalesenArray.id}">
-        <div class="card-body">
-            <h5 class="card-title">${animalesenArray.nombre}</h5>
-            <p class="card-text">Tipo: ${animalesenArray.tipo}</p>
-            <p class="card-text">Color: ${animalesenArray.color}</p>
-            <p class="card-text">Saludo: ${animalesenArray.sonido}</p>
-        </div>
-    </div>
-    `
-})
+*/
